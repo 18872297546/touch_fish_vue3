@@ -1,0 +1,30 @@
+{
+  "name": "touch-fish-vue3",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "element-plus": "^2.3.9",
+    "vue": "^3.3.4",
+    "vue-template-compiler": "^2.7.14"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "eslint": "^8.46.0",
+    "eslint-plugin-vue": "^9.16.1",
+    "less": "^4.2.0",
+    "less-loader": "7.3.0",
+    "typescript": "^5.0.2",
+    "unplugin-auto-import": "^0.16.6",
+    "unplugin-element-plus": "^0.8.0",
+    "unplugin-vue-components": "^0.25.1",
+    "vite": "^4.4.5",
+    "vite-plugin-style-import": "^2.0.0",
+    "vue-tsc": "^1.8.5"
+  }
+}
