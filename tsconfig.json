@@ -5,7 +5,18 @@
     "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
-
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],  
+      "/#/*": [
+        "types/*"
+      ],
+      "constant/*": [
+        "src/constant/*"
+      ],
+    },
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
