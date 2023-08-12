@@ -1,6 +1,6 @@
 .main-header{
   background-color: #d9ecff;
-  width: 600px;
+  width: 650px;
   display: flex;
   margin-bottom: 10px;
   .blue-bar{
@@ -15,6 +15,37 @@
     text-align: start;
   }
 }
-.table-body{
-  border-top: 1px solid #ebeef5;
+.body{
+  display: flex;
+  flex-wrap: wrap;
+  width: 650px;
+  justify-content: space-between;
+  text-align: start;
+  .countdown-item{
+    width: 32%;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    height: 40px;
+    background-color: #f4f4f5;
+    line-height: 40px;
+    p{
+      margin: 0;
+      padding: 0 0 0 12px;
+    }
+    .base(@color){
+      white-space: pre;
+      font-weight: 800;
+      font-size: 18px;
+      display: inline-block;
+      margin: 0 5px;
+      color: @color;
+    }
+    &-name{
+      .base(#000)
+    }
+    &-time:extend(&-name){
+      .base(#f89898)
+    }
+  }
+  
 }

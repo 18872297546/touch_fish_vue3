@@ -4,7 +4,7 @@ import FESTIVAL from 'constant/festival.ts'
 const currentTime = ref()
 
 const countdownText = computed(()=>{
-  return Object.entries(FESTIVAL).map(([key,value])=>{
+  return Object.values(FESTIVAL).map(value=>{
     // console.log('key,value is ',key,value);
     const dateList = value.date
     const vaildFestivalList:any = dateList.map((date)=>{
@@ -14,7 +14,8 @@ const countdownText = computed(()=>{
 
     const millisecondsForDate = vaildFestivalList[0] - currentTime.value
     const [day, hour, minute, second] = formatTime(millisecondsForDate)
-    return { date: `距离${value.name}还有 ${day}天 ${hour}小时${minute}分钟${second}秒` }    
+    
+    return [value.name,day]
   })
 })
 
@@ -54,10 +55,10 @@ console.log('FESTIVAL~~~~~~~',FESTIVAL)
         <div class="blue-bar"></div>
         <div class="content">这是一啥的这是一句鸡汤啥的这是一句鸡汤啥的这是一句鸡汤啥的这是一句鸡汤啥的</div>
       </div>
-      <div class="table-body">
-        <el-table :data="countdownText" stripe style="width: 100%" :show-header="false">
-          <el-table-column prop="date" label="Date" />
-        </el-table>
+      <div class="body">
+        <div class="countdown-item" v-for="item in countdownText">
+          <p>距离<span class="countdown-item-name">{{ item[0] }}</span>还有<span class="countdown-item-time">{{ item[1]?item[1]:0 }}</span>天</p>
+        </div>
       </div>
   </div>
 </template>
