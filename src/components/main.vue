@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { ref,computed, onMounted } from 'vue'
 import FESTIVAL from 'constant/festival.ts'
+import { ArrowUpBold ,ArrowDownBold } from '@element-plus/icons-vue'
+
 const currentTime = ref()
+const showSetting = ref(false)
 
 const countdownText = computed(()=>{
   return Object.values(FESTIVAL).map(value=>{
@@ -41,12 +44,13 @@ const initState = () => {
   },1000)
 }
 
+const switchSetting = () => {
+  showSetting.value = !showSetting.value
+}
+
 onMounted(()=>{
   initState()
 })
-
-console.log('FESTIVAL~~~~~~~',FESTIVAL)
-
 </script>
 
 <template>
@@ -56,9 +60,39 @@ console.log('FESTIVAL~~~~~~~',FESTIVAL)
         <div class="content">这是一啥的这是一句鸡汤啥的这是一句鸡汤啥的这是一句鸡汤啥的这是一句鸡汤啥的</div>
       </div>
       <div class="body">
-        <div class="countdown-item" v-for="item in countdownText">
-          <p>距离<span class="countdown-item-name">{{ item[0] }}</span>还有<span class="countdown-item-time">{{ item[1]?item[1]:0 }}</span>天</p>
+        <div class="countdown-item payoff">
+          <p>距离<span class="countdown-item-name">发工资
+            </span>还有
+            <span class="countdown-item-time">25</span>天
+            <span class="countdown-item-time">14</span>小时
+            <span class="countdown-item-time">20</span>分钟
+            <span class="countdown-item-time">30</span>秒
+          </p>
         </div>
+        <div class="countdown-item" v-for="item in countdownText">
+          <p>距离<span class="countdown-item-name">
+            {{ item[0] }}</span>假期还有<span class="countdown-item-time">{{ item[1]?item[1]:0 }}</span>天
+          </p>
+        </div>
+      </div>
+      <div>
+        这里是下班倒计时
+      </div>
+      <div class="bottom">
+        <div class="buttom-left">当前时间：2023-08-15 23：26</div>
+        <div class="buttom-right">
+          <el-button 
+            type="primary"
+            @click="switchSetting"
+            :icon="showSetting?ArrowDownBold:ArrowUpBold"
+           >
+            
+           {{ showSetting?'关闭设置':'打开设置' }}
+          </el-button>
+        </div>
+      </div>
+      <div v-if="showSetting">
+        这里是设置界面
       </div>
   </div>
 </template>
