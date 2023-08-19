@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref,computed, onMounted } from 'vue'
 import FESTIVAL from 'constant/festival.ts'
+import Setting from '@/components/setting/setting.vue'
 import { ArrowUpBold ,ArrowDownBold } from '@element-plus/icons-vue'
 
 const currentTime = ref()
@@ -84,16 +85,18 @@ onMounted(()=>{
           <el-button 
             type="primary"
             @click="switchSetting"
-            :icon="showSetting?ArrowDownBold:ArrowUpBold"
+            :icon="showSetting?ArrowUpBold:ArrowDownBold"
            >
             
            {{ showSetting?'关闭设置':'打开设置' }}
           </el-button>
         </div>
       </div>
-      <div v-if="showSetting">
-        这里是设置界面
-      </div>
+
+      <Setting v-if="showSetting"
+        @close-setting="showSetting = false"
+      ></Setting>
+
   </div>
 </template>
 

@@ -23,11 +23,12 @@
   text-align: start;
   .countdown-item{
     width: 32%;
-    border-radius: 5px;
-    margin-bottom: 5px;
+    border-radius: 10px;
+    margin-bottom: 10px;
     height: 40px;
-    background-color: #f4f4f5;
+    border: #DCDFE6 1px solid;
     line-height: 40px;
+    
     p{
       margin: 0;
       padding: 0 0 0 12px;
@@ -43,8 +44,13 @@
     &-name{
       .base(#000)
     }
-    &-time:extend(&-name){
-      .base(#f89898)
+    &-time{
+      .base(#95d475)
+    }
+    &:hover{
+      cursor: pointer;
+      border: #FFF 1px solid;
+      box-shadow: var(--el-box-shadow-light);
     }
   }
   .countdown-item.payoff{
