@@ -3,9 +3,11 @@ import { ref,computed, onMounted } from 'vue'
 import FESTIVAL from 'constant/festival.ts'
 import Setting from '@/components/setting/setting.vue'
 import { ArrowUpBold ,ArrowDownBold } from '@element-plus/icons-vue'
+import {SETTING_ITEM_NAME} from 'constant/common'
 
 const currentTime = ref()
 const showSetting = ref(false)
+const configSetting = ref({})
 
 const countdownText = computed(()=>{
   return Object.values(FESTIVAL).map(value=>{
@@ -17,11 +19,40 @@ const countdownText = computed(()=>{
     }).filter(Boolean)
 
     const millisecondsForDate = vaildFestivalList[0] - currentTime.value
-    const [day, hour, minute, second] = formatTime(millisecondsForDate)
+    const [day] = formatTime(millisecondsForDate)
     
     return [value.name,day]
   })
 })
+
+const getTimeNumber = () => {
+  console.log('configSetting is ???',configSetting.value);
+  Object.entries(configSetting.value).map(([key,value])=>{
+    switch (key) {
+      case 'comeOffWorkTime':
+        console.log('value is /..',value);
+        
+        break;
+      case 'characterUp':
+      
+      break;      
+      case 'payday':
+      
+      break;
+      default:
+        break;
+    }
+    // if(typeof value=== 'number'){
+
+    // }else{
+    //   const date = Date.parse(value)
+    //   const millisecondsForDate = vaildFestivalList[0] - currentTime.value
+    // }
+    // return 
+  })
+
+  // return [day, hour, minute, second]
+}
 
 const formatTime = (ms:any) => {
   const totalSecond = ms / 1000
@@ -40,6 +71,14 @@ const formatTime = (ms:any) => {
 }
 
 const initState = () => {
+  const settingString = localStorage.getItem(SETTING_ITEM_NAME)
+  if(settingString){
+    const settingMap = JSON.parse(settingString)
+    configSetting.value = settingMap
+    console.log('当前配置',configSetting.value);
+    
+  }
+
   setInterval(()=>{
     currentTime.value = Date.now()
   },1000)
@@ -51,6 +90,7 @@ const switchSetting = () => {
 
 onMounted(()=>{
   initState()
+  getTimeNumber()
 })
 </script>
 
@@ -76,9 +116,9 @@ onMounted(()=>{
           </p>
         </div>
       </div>
-      <div>
-        这里是下班倒计时
-      </div>
+
+
+
       <div class="bottom">
         <div class="buttom-left">当前时间：2023-08-15 23：26</div>
         <div class="buttom-right">
@@ -93,9 +133,11 @@ onMounted(()=>{
         </div>
       </div>
 
-      <Setting v-if="showSetting"
+      <Setting 
+        v-if="showSetting"
         @close-setting="showSetting = false"
-      ></Setting>
+        :configSetting="configSetting"
+      />
 
   </div>
 </template>
