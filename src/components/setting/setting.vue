@@ -30,14 +30,20 @@ onMounted(()=>{
 <template>
     <el-form :model="settingConfig">
         <el-form-item label="设置下班时间">
-            <el-time-picker v-model="settingConfig.comeOffWorkTime" placeholder="请选择时间" />
+            <el-time-select 
+                v-model="settingConfig.comeOffWorkTime" 
+                placeholder="请选择时间"     
+                start="14:00"
+                step="00:15"
+                end="22:00"/>
         </el-form-item>
         <el-form-item label="设置角色复刻时间">
             <el-date-picker 
                 v-model="settingConfig.characterUp" 
                 type="datetime" 
                 placeholder="请选择时间和日期"
-                :default-time="characterUpDefaultTime" />
+                :default-time="characterUpDefaultTime"
+                value-format="YYYY-MM-DDTHH:mm:ss" />
         </el-form-item>
         <el-form-item label="设置发薪日">
             <el-input-number v-model="settingConfig.payday" :min="1" :max="31"/>
