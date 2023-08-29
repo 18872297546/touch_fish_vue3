@@ -25,19 +25,34 @@ const countdownText = computed(()=>{
   })
 })
 
+const comeOffWorkTime = computed(()=>{
+  const value = configSetting.value?.comeOffWorkTime
+  const date = new Date(currentTime.value).toJSON().split('T')[0]+'T'+value
+  const ms = Date.parse(date)
+  const time = ms - currentTime.value
+  const text = time > 0 ? formatTime(time): '下班啦'
+  console.log('comeOffWorkTime is /..',value, text);
+  return text
+})
+
 const getTimeNumber = () => {
   console.log('configSetting is ???',configSetting.value);
   Object.entries(configSetting.value).map(([key,value])=>{
+
     switch (key) {
       case 'comeOffWorkTime':
-        console.log('value is /..',value);
-        
+        const date = new Date(currentTime.value).toJSON().split('T')[0]+'T'+value
+        const ms = Date.parse(date)
+        const time = ms - currentTime.value
+        const text = time > 0 ? formatTime(time): '下班啦'
         break;
       case 'characterUp':
+        console.log('characterUp is /..',value);
       
       break;      
       case 'payday':
-      
+        console.log('payday is /..',value);
+        
       break;
       default:
         break;
@@ -78,7 +93,7 @@ const initState = () => {
     console.log('当前配置',configSetting.value);
     
   }
-
+  currentTime.value = Date.now()
   setInterval(()=>{
     currentTime.value = Date.now()
   },1000)
@@ -116,7 +131,7 @@ onMounted(()=>{
           </p>
         </div>
       </div>
-
+      {{ comeOffWorkTime }}
 
 
       <div class="bottom">

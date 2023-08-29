@@ -33,9 +33,9 @@ onMounted(()=>{
             <el-time-select 
                 v-model="settingConfig.comeOffWorkTime" 
                 placeholder="请选择时间"     
-                start="14:00"
+                start="06:00"
                 step="00:15"
-                end="22:00"/>
+                end="23:00"/>
         </el-form-item>
         <el-form-item label="设置角色复刻时间">
             <el-date-picker 
