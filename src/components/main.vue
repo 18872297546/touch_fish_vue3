@@ -27,11 +27,18 @@ const countdownText = computed(()=>{
 
 const comeOffWorkTime = computed(()=>{
   const value = configSetting.value?.comeOffWorkTime
-  const date = new Date(currentTime.value).toJSON().split('T')[0]+'T'+value
+  const date = new Date(currentTime.value).toJSON()?.split('T')[0]+'T'+value
   const ms = Date.parse(date)
   const time = ms - currentTime.value
   const text = time > 0 ? formatTime(time): '下班啦'
-  console.log('comeOffWorkTime is /..',value, text);
+  if(Array.isArray(text)) text.splice(0,1)
+  return text
+})
+
+const characterUp = computed(() => {
+  const value = configSetting.value?.characterUp
+  const time = Date.parse(value) - currentTime.value
+  const text = time>0?formatTime(time):'过了'
   return text
 })
 
@@ -57,16 +64,7 @@ const getTimeNumber = () => {
       default:
         break;
     }
-    // if(typeof value=== 'number'){
-
-    // }else{
-    //   const date = Date.parse(value)
-    //   const millisecondsForDate = vaildFestivalList[0] - currentTime.value
-    // }
-    // return 
   })
-
-  // return [day, hour, minute, second]
 }
 
 const formatTime = (ms:any) => {
@@ -130,9 +128,27 @@ onMounted(()=>{
             {{ item[0] }}</span>假期还有<span class="countdown-item-time">{{ item[1]?item[1]:0 }}</span>天
           </p>
         </div>
-      </div>
-      {{ comeOffWorkTime }}
+        <div class="countdown-item payoff">
+          <p v-if="Array.isArray(comeOffWorkTime)">距离<span class="countdown-item-name">下班
+            </span>还有
+            <span class="countdown-item-time">{{ comeOffWorkTime[0] }}</span>小时
+            <span class="countdown-item-time">{{ comeOffWorkTime[1] }}</span>分钟
+            <span class="countdown-item-time">{{ comeOffWorkTime[2] }}</span>秒
+          </p>
+          <p v-else>下班啦！！！！</p>
+        </div>
 
+        <div class="countdown-item payoff">
+          <p v-if="Array.isArray(characterUp)">距离<span class="countdown-item-name">{{ configSetting.characterName }}
+            </span>复刻还有
+            <span class="countdown-item-time">{{ characterUp[0] }}</span>天
+            <span class="countdown-item-time">{{ characterUp[1] }}</span>小时
+            <span class="countdown-item-time">{{ characterUp[2] }}</span>分钟
+            <span class="countdown-item-time">{{ characterUp[3] }}</span>秒
+          </p>
+          <p v-else>复刻时间已过，请重新设置复刻的角色</p>
+        </div>
+      </div>
 
       <div class="bottom">
         <div class="buttom-left">当前时间：2023-08-15 23：26</div>
@@ -142,7 +158,6 @@ onMounted(()=>{
             @click="switchSetting"
             :icon="showSetting?ArrowUpBold:ArrowDownBold"
            >
-            
            {{ showSetting?'关闭设置':'打开设置' }}
           </el-button>
         </div>
