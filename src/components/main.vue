@@ -3,12 +3,13 @@ import { ref,computed, onMounted } from 'vue'
 import FESTIVAL from 'constant/festival.ts'
 import Setting from '@/components/setting/setting.vue'
 import { ArrowUpBold ,ArrowDownBold } from '@element-plus/icons-vue'
-import {SETTING_ITEM_NAME} from 'constant/common'
+import {SETTING_ITEM_NAME,GREAT_QUOTE} from 'constant/common'
+import {random} from 'lodash'
 
 const currentTime = ref()
 const showSetting = ref(false)
-const configSetting = ref({})
-
+const configSetting = ref()
+const quoteIndex = ref(0)
 const countdownText = computed(()=>{
   return Object.values(FESTIVAL).map(value=>{
     // console.log('key,value is ',key,value);
@@ -42,30 +43,12 @@ const characterUp = computed(() => {
   return text
 })
 
-const getTimeNumber = () => {
-  console.log('configSetting is ???',configSetting.value);
-  Object.entries(configSetting.value).map(([key,value])=>{
-
-    switch (key) {
-      case 'comeOffWorkTime':
-        const date = new Date(currentTime.value).toJSON().split('T')[0]+'T'+value
-        const ms = Date.parse(date)
-        const time = ms - currentTime.value
-        const text = time > 0 ? formatTime(time): '下班啦'
-        break;
-      case 'characterUp':
-        console.log('characterUp is /..',value);
-      
-      break;      
-      case 'payday':
-        console.log('payday is /..',value);
-        
-      break;
-      default:
-        break;
-    }
-  })
-}
+// const paydayCountdown = computed(()=>{
+//   const value = configSetting.value?.payday
+//   const date = new Date(currentTime.value)
+//   console.log('date is ???',date);
+  
+// })
 
 const formatTime = (ms:any) => {
   const totalSecond = ms / 1000
@@ -103,7 +86,7 @@ const switchSetting = () => {
 
 onMounted(()=>{
   initState()
-  getTimeNumber()
+  quoteIndex.value = random(0,GREAT_QUOTE.length-1)
 })
 </script>
 
@@ -111,7 +94,7 @@ onMounted(()=>{
   <div class="common-layout">
       <div class="main-header">
         <div class="blue-bar"></div>
-        <div class="content">这是一啥的这是一句鸡汤啥的这是一句鸡汤啥的这是一句鸡汤啥的这是一句鸡汤啥的</div>
+        <div class="content">{{ GREAT_QUOTE[quoteIndex] }}</div>
       </div>
       <div class="body">
         <div class="countdown-item payoff">
@@ -139,7 +122,7 @@ onMounted(()=>{
         </div>
 
         <div class="countdown-item payoff">
-          <p v-if="Array.isArray(characterUp)">距离<span class="countdown-item-name">{{ configSetting.characterName }}
+          <p v-if="Array.isArray(characterUp)">距离<span class="countdown-item-name">{{ configSetting?.characterName }}
             </span>复刻还有
             <span class="countdown-item-time">{{ characterUp[0] }}</span>天
             <span class="countdown-item-time">{{ characterUp[1] }}</span>小时
@@ -162,7 +145,6 @@ onMounted(()=>{
           </el-button>
         </div>
       </div>
-
       <Setting 
         v-if="showSetting"
         @close-setting="showSetting = false"

@@ -23,7 +23,9 @@ const onSubmit = () => {
 }
 
 onMounted(()=>{
-    settingConfig.value = props.configSetting
+    if (props.configSetting) {
+        settingConfig.value =  props.configSetting
+    }
 })
 
 </script>

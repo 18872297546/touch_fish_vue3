@@ -7,6 +7,9 @@ dependencies:
   element-plus:
     specifier: ^2.3.9
     version: registry.npmmirror.com/element-plus@2.3.9(vue@3.3.4)
+  lodash:
+    specifier: ^4.17.21
+    version: registry.npmmirror.com/lodash@4.17.21
   vue:
     specifier: ^3.3.4
     version: registry.npmmirror.com/vue@3.3.4
@@ -15,6 +18,9 @@ dependencies:
     version: registry.npmmirror.com/vue-template-compiler@2.7.14
 
 devDependencies:
+  '@types/lodash':
+    specifier: ^4.14.197
+    version: registry.npmmirror.com/@types/lodash@4.14.197
   '@vitejs/plugin-vue':
     specifier: ^4.2.3
     version: registry.npmmirror.com/@vitejs/plugin-vue@4.2.3(vite@4.4.5)(vue@3.3.4)
@@ -601,14 +607,13 @@ packages:
     name: '@types/lodash-es'
     version: 4.17.8
     dependencies:
-      '@types/lodash': registry.npmmirror.com/@types/lodash@4.14.196
+      '@types/lodash': registry.npmmirror.com/@types/lodash@4.14.197
     dev: false
 
-  registry.npmmirror.com/@types/lodash@4.14.196:
-    resolution: {integrity: sha512-22y3o88f4a94mKljsZcanlNWPzO0uBsBdzLAngf2tp533LzZcQzb6+eZPJ+vCTt+bqF2XnvT9gejTLsAcJAJyQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/lodash/-/lodash-4.14.196.tgz}
+  registry.npmmirror.com/@types/lodash@4.14.197:
+    resolution: {integrity: sha512-BMVOiWs0uNxHVlHBgzTIqJYmj+PgCo4euloGF+5m4okL3rEYzM2EEv78mw8zWSMM57dM7kVIgJ2QDvwHSoCI5g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/lodash/-/lodash-4.14.197.tgz}
     name: '@types/lodash'
-    version: 4.14.196
-    dev: false
+    version: 4.14.197
 
   registry.npmmirror.com/@types/node@20.4.8:
     resolution: {integrity: sha512-0mHckf6D2DiIAzh8fM8f3HQCvMKDpK94YQ0DSVkfWTG9BZleYIWudw9cJxX8oCk9bM+vAkDyujDV6dmKHbvQpg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/node/-/node-20.4.8.tgz}
@@ -1370,7 +1375,7 @@ packages:
       '@element-plus/icons-vue': registry.npmmirror.com/@element-plus/icons-vue@2.1.0(vue@3.3.4)
       '@floating-ui/dom': registry.npmmirror.com/@floating-ui/dom@1.5.1
       '@popperjs/core': registry.npmmirror.com/@sxzz/popperjs-es@2.11.7
-      '@types/lodash': registry.npmmirror.com/@types/lodash@4.14.196
+      '@types/lodash': registry.npmmirror.com/@types/lodash@4.14.197
       '@types/lodash-es': registry.npmmirror.com/@types/lodash-es@4.17.8
       '@vueuse/core': registry.npmmirror.com/@vueuse/core@9.13.0(vue@3.3.4)
       async-validator: registry.npmmirror.com/async-validator@4.2.5
