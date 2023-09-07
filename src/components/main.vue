@@ -96,10 +96,8 @@ onMounted(()=>{
         <div class="blue-bar"></div>
         <div class="content">{{ GREAT_QUOTE[quoteIndex] }}</div>
       </div>
-      <div class="test111">
-
+      <div class="body-and-bottom">
         <div class="body">
-  
           <div class="countdown-item" v-for="item in countdownText">
             <p>距离<span class="countdown-item-name">
               {{ item[0] }}</span>假期<span class="countdown-item-time">{{ item[1]?item[1]:0 }}</span>天

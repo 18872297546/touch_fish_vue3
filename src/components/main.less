@@ -18,7 +18,7 @@
     text-align: start;
   }
 }
-.test111{
+.body-and-bottom{
   background-image: url('/src/assets/yaoyao.png');
   background-size: cover;
   margin-bottom: 10px;
@@ -26,10 +26,10 @@
 .body{
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
   justify-content: space-between;
   text-align: start;
   background: rgba(255, 255, 255, 0.7);
+  padding: 10px;
   // 使用css来将不透明的图片设透明，实现比较操蛋，还是直接将图片设置透明图好一些
   // position: relative;
   // &:after{
@@ -51,9 +51,8 @@
     border-radius: 10px;
     margin-bottom: 10px;
     height: 30px;
-    border: #fff 1px solid;
     line-height: 30px;
-    
+    background: rgba(255, 255, 255, 0.5);
     p{
       margin: 0;
       padding: 0 0 0 12px;
@@ -70,11 +69,10 @@
       .base(#000)
     }
     &-time{
-      .base(#95d475)
+      .base(red)
     }
     &:hover{
       cursor: pointer;
-      border: #FFF 1px solid;
       box-shadow: var(--el-box-shadow-light);
     }
   }
