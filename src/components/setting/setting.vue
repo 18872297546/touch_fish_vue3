@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {onMounted, ref} from 'vue'
+import {onMounted, ref, watch} from 'vue'
 import {SETTING_ITEM_NAME} from 'constant/common'
 import characterMap from 'constant/character'
 const characterUpDefaultTime = new Date(2000, 1, 1, 12, 0, 0)
@@ -7,7 +7,6 @@ const props = defineProps<{
     configSetting:any
 }>()
 
-const emit = defineEmits(['close-setting'])
 
 const settingConfig = ref({
     comeOffWorkTime:'',
@@ -16,11 +15,10 @@ const settingConfig = ref({
     characterName: 0
 })
 
-const onSubmit = () => {
+watch(settingConfig,()=>{
     const settingString = JSON.stringify(settingConfig.value)
     localStorage.setItem(SETTING_ITEM_NAME,settingString)
-    emit('close-setting')
-}
+},{deep:true})
 
 onMounted(()=>{
     if (props.configSetting) {
@@ -61,9 +59,7 @@ onMounted(()=>{
         <el-form-item label="设置发薪日">
             <el-input-number v-model="settingConfig.payday" :min="1" :max="31"/>
         </el-form-item>
-        <el-form-item>
-            <el-button type="primary" @click="onSubmit">保存设置</el-button>
-        </el-form-item>
+
     </el-form>
 
 </template>

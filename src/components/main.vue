@@ -137,7 +137,7 @@ onMounted(()=>{
               <span class="countdown-item-time">{{ comeOffWorkTime[1] }}</span>分钟
               <span class="countdown-item-time">{{ comeOffWorkTime[2] }}</span>秒
             </p>
-            <p v-else>下班啦！！！！</p>
+            <p v-else>下班啦！自由啦！</p>
           </div>
   
           <div class="countdown-item payoff">
@@ -167,7 +167,6 @@ onMounted(()=>{
       </div>
       <Setting 
         v-if="showSetting"
-        @close-setting="showSetting = false"
         :configSetting="configSetting"
       />
 
