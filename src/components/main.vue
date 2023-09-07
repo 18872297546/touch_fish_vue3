@@ -44,13 +44,13 @@ const characterUp = computed(() => {
 })
 
 const countdownToPayday = computed(() => {
-  const now = new Date(); // 获取当前日期
+  const now:any = new Date(); // 获取当前日期
   const currentMonth = now.getMonth(); // 获取当前月份（0 到 11）
   const currentYear = now.getFullYear(); // 获取当前年份
   const dayOfMonth = configSetting.value?.payday
   const sixPM = 18
   // 使用当前年份和月份，以及传入的日期构建发工资日期
-  const payday = new Date(currentYear, currentMonth, dayOfMonth, sixPM);
+  const payday:any = new Date(currentYear, currentMonth, dayOfMonth, sixPM);
 
   // 如果发工资日期已经过去，将月份加 1，表示下个月的发工资日期
   if (payday < now) {
@@ -80,8 +80,6 @@ const displayCurrentTime = computed( () =>  {
   const seconds = current.getSeconds()
 
   const [formatMonth,formatDay,formattedHours,formattedMinutes,formattedSeconds] = padZeroes([month,day,hours,minutes,seconds])
-
-
   return `${year}-${formatMonth}-${formatDay}  ${formattedHours}:${formattedMinutes}:${formattedSeconds}`
 })
 

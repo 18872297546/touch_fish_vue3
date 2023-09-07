@@ -12,8 +12,8 @@
   },
   "content_scripts":[
     {
-      "js": [ "assets/index-1b36e381.js"],
-      "css":[ "assets/index-cbe51995.css" ],
+      "js": [ "assets/index-d7d971b6.js"],
+      "css":[ "assets/index-8f2ad58d.css" ],
       "matches":["<all_urls>"]
     }
   ],
