@@ -96,53 +96,54 @@ onMounted(()=>{
         <div class="blue-bar"></div>
         <div class="content">{{ GREAT_QUOTE[quoteIndex] }}</div>
       </div>
-      <div class="body">
-        <div class="countdown-item payoff">
-          <p>距离<span class="countdown-item-name">发工资
-            </span>还有
-            <span class="countdown-item-time">25</span>天
-            <span class="countdown-item-time">14</span>小时
-            <span class="countdown-item-time">20</span>分钟
-            <span class="countdown-item-time">30</span>秒
-          </p>
-        </div>
-        <div class="countdown-item" v-for="item in countdownText">
-          <p>距离<span class="countdown-item-name">
-            {{ item[0] }}</span>假期还有<span class="countdown-item-time">{{ item[1]?item[1]:0 }}</span>天
-          </p>
-        </div>
-        <div class="countdown-item payoff">
-          <p v-if="Array.isArray(comeOffWorkTime)">距离<span class="countdown-item-name">下班
-            </span>还有
-            <span class="countdown-item-time">{{ comeOffWorkTime[0] }}</span>小时
-            <span class="countdown-item-time">{{ comeOffWorkTime[1] }}</span>分钟
-            <span class="countdown-item-time">{{ comeOffWorkTime[2] }}</span>秒
-          </p>
-          <p v-else>下班啦！！！！</p>
-        </div>
+      <div class="test111">
 
-        <div class="countdown-item payoff">
-          <p v-if="Array.isArray(characterUp)">距离<span class="countdown-item-name">{{ configSetting?.characterName }}
-            </span>复刻还有
-            <span class="countdown-item-time">{{ characterUp[0] }}</span>天
-            <span class="countdown-item-time">{{ characterUp[1] }}</span>小时
-            <span class="countdown-item-time">{{ characterUp[2] }}</span>分钟
-            <span class="countdown-item-time">{{ characterUp[3] }}</span>秒
-          </p>
-          <p v-else>复刻时间已过，请重新设置复刻的角色</p>
+        <div class="body">
+  
+          <div class="countdown-item" v-for="item in countdownText">
+            <p>距离<span class="countdown-item-name">
+              {{ item[0] }}</span>假期<span class="countdown-item-time">{{ item[1]?item[1]:0 }}</span>天
+            </p>
+          </div>
+          <div class="countdown-item payoff">
+            <p>距离<span class="countdown-item-name">发工资
+              </span>还有
+              <span class="countdown-item-time">25</span>天
+            </p>
+          </div>
+          <div class="countdown-item payoff">
+            <p v-if="Array.isArray(comeOffWorkTime)">距离<span class="countdown-item-name">下班
+              </span>还有
+              <span class="countdown-item-time">{{ comeOffWorkTime[0] }}</span>小时
+              <span class="countdown-item-time">{{ comeOffWorkTime[1] }}</span>分钟
+              <span class="countdown-item-time">{{ comeOffWorkTime[2] }}</span>秒
+            </p>
+            <p v-else>下班啦！！！！</p>
+          </div>
+  
+          <div class="countdown-item payoff">
+            <p v-if="Array.isArray(characterUp)">距离<span class="countdown-item-name">{{ configSetting?.characterName }}
+              </span>复刻还有
+              <span class="countdown-item-time">{{ characterUp[0] }}</span>天
+              <span class="countdown-item-time">{{ characterUp[1] }}</span>小时
+              <span class="countdown-item-time">{{ characterUp[2] }}</span>分钟
+              <span class="countdown-item-time">{{ characterUp[3] }}</span>秒
+            </p>
+            <p v-else>复刻时间已过，请重新设置复刻的角色</p>
+          </div>
         </div>
-      </div>
-
-      <div class="bottom">
-        <div class="buttom-left">当前时间：2023-08-15 23：26</div>
-        <div class="buttom-right">
-          <el-button 
-            type="primary"
-            @click="switchSetting"
-            :icon="showSetting?ArrowUpBold:ArrowDownBold"
-           >
-           {{ showSetting?'关闭设置':'打开设置' }}
-          </el-button>
+  
+        <div class="bottom">
+          <div class="buttom-left"></div>
+          <div class="buttom-right">
+            <el-button 
+              type="primary"
+              @click="switchSetting"
+              :icon="showSetting?ArrowUpBold:ArrowDownBold"
+             >
+             {{ showSetting?'关闭设置':'打开设置' }}
+            </el-button>
+          </div>
         </div>
       </div>
       <Setting 
