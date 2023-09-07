@@ -73,8 +73,8 @@ const formatTime = (ms:any) => {
 const displayCurrentTime = computed( () =>  {
   const current = new Date(currentTime.value)
   const year = current.getFullYear()
-  const month = current.getMonth()
-  const day = current.getDay()
+  const month = current.getMonth()+1
+  const day = current.getDate()
   const hours = current.getHours()
   const minutes = current.getMinutes()
   const seconds = current.getSeconds()
