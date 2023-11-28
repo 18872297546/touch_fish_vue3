@@ -12,6 +12,7 @@
     "@element-plus/icons-vue": "^2.1.0",
     "element-plus": "^2.3.9",
     "lodash": "^4.17.21",
+    "sass": "^1.69.5",
     "vue": "^3.3.4",
     "vue-template-compiler": "^2.7.14"
   },

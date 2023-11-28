@@ -4,7 +4,9 @@ import 'element-plus/dist/index.css'
 </script>
 
 <template>
-  <Main/>
+  <el-config-provider namespace="touch">
+    <Main/>
+  </el-config-provider>
 </template>
 
 <style scoped>
