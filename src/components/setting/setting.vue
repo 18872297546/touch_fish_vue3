@@ -15,6 +15,13 @@ const settingConfig = ref({
     characterName: 0
 })
 
+const querySearch = (queryString: string, cb: any) => {
+  const results = queryString
+    ? characterMap.filter((item)=>item.value.indexOf(queryString))
+    : characterMap
+  cb(results)
+}
+
 watch(settingConfig,()=>{
     const settingString = JSON.stringify(settingConfig.value)
     localStorage.setItem(SETTING_ITEM_NAME,settingString)
@@ -39,14 +46,12 @@ onMounted(()=>{
                 end="23:00"/>
         </el-form-item>
         <el-form-item label="设置要复刻的角色">
-            <el-select v-model="settingConfig.characterName" filterable placeholder="Select">
-                <el-option
-                    v-for="item in characterMap"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value"
-                />
-            </el-select>
+            <el-autocomplete
+                v-model="settingConfig.characterName"
+                :fetch-suggestions="querySearch"
+                clearable
+                class="inline-input w-50"
+                placeholder="请输入关键字选择角色"/>
         </el-form-item>
         <el-form-item label="设置角色复刻时间">
             <el-date-picker 

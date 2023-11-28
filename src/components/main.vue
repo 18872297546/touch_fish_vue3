@@ -138,7 +138,7 @@ onMounted(()=>{
             <p v-else>下班啦！自由啦！</p>
           </div>
   
-          <div class="countdown-item payoff">
+          <div class="countdown-item character-up">
             <p v-if="Array.isArray(characterUp)">距离<span class="countdown-item-name">{{ configSetting?.characterName }}
               </span>复刻还有
               <span class="countdown-item-time">{{ characterUp[0] }}</span>天
