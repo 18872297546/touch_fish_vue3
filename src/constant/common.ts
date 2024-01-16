@@ -1,5 +1,5 @@
-const SETTING_ITEM_NAME = 'touch-fish-setting'
-const GREAT_QUOTE = [
+export const SETTING_ITEM_NAME = 'touch-fish-setting'
+export const GREAT_QUOTE = [
     '上班还能挣点窝囊费，不上班只剩窝囊废了。',
     '我的日程安排很简单，起床然后受苦。',
     '上班吃外卖真的很不健康，建议大家不要上班。',
@@ -21,8 +21,3 @@ const GREAT_QUOTE = [
     '今天去看⽛医，⽛医问我年纪轻轻的⽛齿怎么磨损这么严重？我说这些年，我都是咬着⽛过来的。',
     '房子是房东的，但生活不是，因为生活是老板的。',
 ]
-
-export {
-    SETTING_ITEM_NAME,
-    GREAT_QUOTE
-}

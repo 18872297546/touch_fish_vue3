@@ -14,8 +14,6 @@ declare module 'vue' {
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElInputNumber: typeof import('element-plus/es')['ElInputNumber']
-    ElOption: typeof import('element-plus/es')['ElOption']
-    ElSelect: typeof import('element-plus/es')['ElSelect']
     ElTimeSelect: typeof import('element-plus/es')['ElTimeSelect']
     Main: typeof import('./src/components/main.vue')['default']
     Setting: typeof import('./src/components/setting/setting.vue')['default']

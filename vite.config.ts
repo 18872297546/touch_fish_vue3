@@ -5,6 +5,8 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import styleImport from 'vite-plugin-style-import'
 import path from "path";
+import legacy from '@vitejs/plugin-legacy'
+
 const pathSrc = path.resolve(__dirname, 'src')
 
 // https://vitejs.dev/config/
@@ -19,6 +21,9 @@ export default defineConfig({
         importStyle: 'sass',
       }),],
     }),
+    legacy({
+      targets: ['chrome 66']
+    })
   ],
   resolve:{
     alias:{
